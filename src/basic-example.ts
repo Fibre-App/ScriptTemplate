@@ -16,7 +16,7 @@ functions in the file which you call from within the run method, but Fibre will
 just ignore them.
 
 The run method always needs to be written to take in an array of IRepositorys.
-This is because the scritp might be used in the repository view, or in the open-
+This is because the script might be used in the repository view, or in the open-
 repository view where a script can be run on many repositories at once.
 
 Because the run method needs to be take in an array, you should typically
