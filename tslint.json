@@ -6,17 +6,8 @@
     "deprecation": {
       "severity": "warning"
     },
-    "eofline": true,
-    "import-blacklist": [
-      true,
-      "rxjs/Rx"
-    ],
     "interface-name": false,
     "max-classes-per-file": false,
-    "max-line-length": [
-      true,
-      140
-    ],
     "member-access": false,
     "member-ordering": [
       true,
@@ -30,14 +21,6 @@
       }
     ],
     "no-consecutive-blank-lines": false,
-    "no-console": [
-      true,
-      "debug",
-      "info",
-      "time",
-      "timeEnd",
-      "trace"
-    ],
     "no-empty": false,
     "no-inferrable-types": false,
     "no-non-null-assertion": true,
@@ -53,11 +36,6 @@
     ],
     "object-literal-sort-keys": false,
     "ordered-imports": false,
-    "quotemark": [
-      true,
-      "double",
-      "backtick"
-    ],
     "semicolon": [true, "always"],
     "trailing-comma": false,
     "typedef": [ true,
