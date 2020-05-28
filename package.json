@@ -16,6 +16,6 @@
   },
   "homepage": "https://github.com/Fibre-SCM/Fibre#readme",
   "dependencies": {
-    "@fibre/types": "0.0.13"
+    "@fibre/types": "0.0.18"
   }
 }

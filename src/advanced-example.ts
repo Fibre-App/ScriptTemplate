@@ -14,7 +14,11 @@ unit test.
 
 */
 
-@Script("advancedExample")
+@Script({
+  label: "Advanced Example",
+  tooltip: "This is a more advanced example",
+  ionIcon: "rocket-outline"
+})
 export class AdvancedExample implements IScript {
 
   constructor(@Inject(A.Logger) private readonly logger: ILogger,
@@ -25,14 +29,18 @@ export class AdvancedExample implements IScript {
   public async run(repositories: IRepository[]): Promise<IResult> {
 
     for (const repository of repositories) {
+      const dataFolder: string = repository.localLocation + "/data";
 
       this.logger.info("Running the script: advancedExample");
 
       const shouldContinue: YesNoResult = await this.dialogService.showYesNoDialog("Sure?", "Do you want to continue?", YesNoResult.Yes);
+      if (shouldContinue === YesNoResult.Yes) {
 
-      if (shouldContinue) {
-        await this.fileService.writeFile("file/path.txt", repository.name, WriteType.append);
+        if (!await this.fileService.doesFolderExist(dataFolder)) {
+          await this.fileService.createFolder(dataFolder);
+        }
 
+        await this.fileService.writeFile(dataFolder + "/name.txt", repository.name, WriteType.append);
         this.toasterService.success("Written!", "Successfully written to file");
       }
     }

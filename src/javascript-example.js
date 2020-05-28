@@ -2,13 +2,17 @@ import { Script, Inject, A } from "@fibre/types";
 
 /*
 
-If you prefer, scripts can be written in JavaScript, as well as TypeScript.
+If you prefer, scripts can be written in JavaScript instead of TypeScript.
 
 JavaScript scripts still require the @Script() decorator
 
 */
 
-@Script("javascriptExample")
+@Script({
+  label: "Javascript Example",
+  tooltip: "This is a Javascript example",
+  ionIcon: "logo-javascript"
+})
 export class JavascriptExample {
 
 	logger;

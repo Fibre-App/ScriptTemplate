@@ -8,12 +8,12 @@ It doesn't matter what either the file name or the actual class name of a script
 but ideally they should be the same as the name of the script.
 
 Fibre will scan script projects and find classes which have the @script() decorator.
-It is using this decorator that you can set a name for the script. This is the value
+It is using this decorator that you can set a metadata for the script. These are the values
 that will show in the Fibre user-interface.
 
 The run method is what will be called by Fibre. You can have other methods or
 functions in the file which you call from within the run method, but Fibre will
-just ignore them.
+only call the run method.
 
 The run method always needs to be written to take in an array of IRepositorys.
 This is because the script might be used in the repository view, or in the open-
@@ -25,7 +25,11 @@ all of them.
 
 */
 
-@Script("basicExample")
+@Script({
+  label: "Basic Example", // This shows on the button in the UI
+  tooltip: "This is a basic example", // This shows in a tooltip of the button
+  ionIcon: "checkboxOutline" // This is an icon for the button in the UI. Find them all at https://ionicons.com
+})
 export class BasicExample implements IScript {
 
   public async run(repositories: IRepository[]): Promise<IResult> {
@@ -51,7 +55,7 @@ export class BasicExample implements IScript {
       // For example:
 
       // The first diff in the first file in the changeset (commit), where the first branch is currently at
-      const diff: IDiff = repository.localbranches[0].changeset.files[0].diffs[0];
+      const diff: IDiff | undefined = repository.localbranches[0].changeset?.files[0].diffs[0];
 
       repository.changesets.filter(c => c.author === "John").forEach(c => {
         // Iterates over all changesets (commits) which were made by John
@@ -60,8 +64,8 @@ export class BasicExample implements IScript {
 
     /*
 
-    For now, the response from scripts is not read in by Fibre, but the interface requires all scripts
-    to return an IResult. In later versions this object will be read in for error messages and statuses.
+    You then need to return an IResult.
+    Currently it only has a success flag.
 
     */
 
